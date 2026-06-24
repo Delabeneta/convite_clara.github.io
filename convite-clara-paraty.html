@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<title>Para Clara</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --vinho: #B23A5E;
+    --coral: #F2897E;
+    --rosa: #F0A9BE;
+    --rosa-claro: #FBDCE4;
+    --pessego: #FBDCC0;
+    --lilas: #C9B6DE;
+    --ceu: #AFD3DD;
+    --papel: #FFFCF9;
+    --tinta: #4A2A35;
+    --ouro: #D9A35C;
+  }
+
+  *{margin:0; padding:0; box-sizing:border-box;}
+  html{ scroll-behavior:smooth; -webkit-tap-highlight-color:transparent; }
+
+  body{
+    background: var(--papel);
+    font-family:'Jost', sans-serif;
+    color: var(--tinta);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .page{ max-width:520px; margin:0 auto; position:relative; padding-bottom:20px; }
+
+  /* ============ HERO ============ */
+  .hero{
+    position:relative;
+    min-height: 88vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding: 40px 24px 30px;
+    overflow:hidden;
+  }
+
+  .blob{
+    position:absolute;
+    border-radius:50%;
+    opacity:0.45;
+    mix-blend-mode: multiply;
+    will-change:transform;
+  }
+  .blob1{ width:300px; height:280px; background: radial-gradient(circle, var(--rosa-claro), transparent 70%); top:-80px; left:-100px; }
+  .blob2{ width:280px; height:280px; background: radial-gradient(circle, var(--pessego), transparent 70%); top:40px; right:-120px; }
+  .blob3{ width:240px; height:240px; background: radial-gradient(circle, var(--ceu), transparent 70%); bottom:-60px; left:-60px; opacity:0.35; }
+  .blob4{ width:200px; height:200px; background: radial-gradient(circle, var(--lilas), transparent 70%); bottom:10px; right:-40px; opacity:0.3; }
+
+  .hero-eyebrow{
+    font-family:'Jost', sans-serif; font-size:12px; letter-spacing:0.25em; text-transform:uppercase;
+    color: var(--vinho); opacity:0.75; margin-bottom:12px; position:relative; z-index:1;
+  }
+
+  .hero-title{
+    font-family:'Caveat', cursive; font-weight:700; font-size:clamp(64px, 18vw, 84px); line-height:0.95;
+    color: var(--vinho); position:relative; z-index:1;
+    text-shadow: 2px 2px 0 rgba(255,255,255,0.6);
+  }
+
+  .hero-sub{
+    font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(18px, 4vw, 21px);
+    color: var(--tinta); margin-top:14px; max-width:320px; position:relative; z-index:1;
+  }
+
+  .hero-scroll{
+    margin-top:40px; font-size:11px; letter-spacing:0.18em; text-transform:uppercase;
+    color: var(--vinho); opacity:0.6; position:relative; z-index:1;
+    animation: bounce 2s infinite ease-in-out;
+  }
+  @keyframes bounce{ 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(8px); } }
+
+  .wave-divider{
+    width:100%; height:40px;
+    background: var(--papel);
+  }
+  .wave-divider svg{ width:100%; height:100%; display:block; }
+
+  /* ============ REVEAL ============ */
+  .reveal{
+    opacity:0; transform: translateY(30px);
+    transition: opacity 0.9s cubic-bezier(.4,0,.2,1), transform 0.9s cubic-bezier(.4,0,.2,1);
+  }
+  .reveal.in{ opacity:1; transform: translateY(0); }
+
+  /* ============ CARTA ============ */
+  .letter-section{ padding: 10px 20px 50px; position:relative; }
+  .letter-card{
+    background: var(--papel);
+    border-radius: 18px;
+    padding: 34px 24px;
+    box-shadow: 0 18px 50px rgba(178,58,94,0.12);
+    border: 1px solid #F6E4E9;
+    position:relative;
+  }
+  .letter-card::before{
+    content:"♡";
+    position:absolute; top:-18px; left:50%; transform:translateX(-50%);
+    width:36px; height:36px; border-radius:50%;
+    background: linear-gradient(135deg, var(--rosa), var(--vinho));
+    color:#fff; display:flex; align-items:center; justify-content:center;
+    font-size:16px; box-shadow: 0 8px 16px rgba(178,58,94,0.35);
+  }
+  .salutation{
+    font-family:'Caveat', cursive; font-weight:700; font-size:38px;
+    color: var(--vinho); margin-bottom: 14px; text-align:center;
+  }
+  .letter-card p{
+    font-family:'Cormorant Garamond', serif; font-size:clamp(17px, 3.8vw, 19px); line-height:1.8; color: var(--tinta);
+    margin-bottom: 14px;
+  }
+  .letter-card p em{ color: var(--vinho); font-style:italic; }
+  .closing{ margin-top:20px; text-align:center; font-family:'Cormorant Garamond', serif; font-style:italic; font-size:19px; color: var(--vinho); }
+  .signoff{ margin-top:6px; text-align:center; font-family:'Caveat', cursive; font-weight:600; font-size:28px; color: var(--vinho); }
+
+  /* ============ FOTO AQUARELA ============ */
+  .painting-section{ padding: 10px 0 16px; text-align:center; position:relative; }
+  .painting-section .float-petal{
+    position:absolute; font-size:16px; opacity:0.4; pointer-events:none;
+    animation: petalDrift 7s ease-in-out infinite;
+  }
+  .painting-section .fp1{ top:6px; left:8%; animation-delay:0s; }
+  .painting-section .fp2{ top:40px; right:10%; animation-delay:1.4s; font-size:12px; }
+  .painting-section .fp3{ top:90px; left:15%; animation-delay:2.8s; font-size:11px; }
+  @keyframes petalDrift{
+    0%,100%{ transform: translateY(0) rotate(0deg); opacity:0.3; }
+    50%{ transform: translateY(12px) rotate(10deg); opacity:0.6; }
+  }
+  .painting-heading{ position:relative; margin-bottom: 24px; }
+  .painting-title{
+    font-family:'Caveat', cursive; font-weight:600; font-size:clamp(24px, 6vw, 32px); color: var(--tinta); opacity:0.75;
+    margin-bottom:2px;
+  }
+  .painting-sub-wrap{ position:relative; display:inline-block; }
+  .painting-sub{
+    font-family:'Playfair Display', serif; font-style:italic; font-weight:700; font-size:clamp(28px, 7vw, 38px);
+    color: var(--vinho); position:relative; z-index:2; padding: 0 6px;
+  }
+  .brush-underline{
+    position:absolute; left:-6px; right:-6px; bottom:2px; height:14px; z-index:1;
+  }
+  .brush-underline path{
+    fill: none; stroke: var(--rosa); stroke-width:12; stroke-linecap:round;
+    opacity:0.55;
+    stroke-dasharray: 280;
+    stroke-dashoffset: 280;
+    transition: stroke-dashoffset 1.2s cubic-bezier(.4,0,.2,1) 0.2s;
+  }
+  .painting-section.in .brush-underline path{ stroke-dashoffset: 0; }
+
+  .frame-wrap{
+    margin: 0 18px 8px;
+    display:inline-block;
+    position:relative;
+    transform: rotate(-1deg);
+    max-width:92%;
+  }
+  .photo-frame{
+    padding: 8px;
+    background: linear-gradient(160deg, #F1DDA8, #C8973F 45%, #F1DDA8 100%);
+    border-radius: 3px;
+    box-shadow: 0 20px 40px rgba(107,37,64,0.25);
+  }
+  .photo-frame-inner{ padding: 4px; background: #2C1420; border-radius:1px; }
+  .photo-frame img{
+    width:100%; display:block; border-radius:1px;
+    height:auto; aspect-ratio: 16/10;
+    object-fit:cover;
+  }
+  .plaque{
+    margin: 14px auto 0;
+    display:inline-flex; align-items:center; gap:8px;
+    background: linear-gradient(160deg, #F1DDA8, #C8973F);
+    padding: 6px 16px;
+    border-radius: 2px;
+    box-shadow: 0 4px 12px rgba(107,37,64,0.18);
+  }
+  .plaque-text{
+    font-family:'Cormorant Garamond', serif; font-style:italic; font-size:12px;
+    color: #3A220F; letter-spacing:0.02em;
+  }
+  .photo-caption{
+    margin-top:14px;
+    font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(14px, 3.2vw, 16px);
+    color: var(--vinho); opacity:0.8; letter-spacing:0.01em;
+    padding: 0 20px;
+  }
+
+  /* ============ ROTEIRO ============ */
+  .timeline-section{ padding: 60px 24px 10px; }
+  .timeline-heading{ text-align:center; margin-bottom:34px; }
+  .timeline-heading .kicker{
+    font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color: var(--ouro); margin-bottom:6px;
+  }
+  .timeline-heading .title{
+    font-family:'Playfair Display', serif; font-style:italic; font-size:clamp(22px, 5.5vw, 27px); color: var(--vinho);
+  }
+  .timeline{ display:flex; flex-direction:column; gap:0; }
+  .t-item{
+    display:flex; gap:18px; padding: 18px 0;
+    border-bottom: 1px solid #F2E2E7;
+  }
+  .t-item:last-child{ border-bottom:none; }
+  .t-num{
+    font-family:'Playfair Display', serif; font-style:italic; font-size:26px; color: var(--rosa);
+    flex-shrink:0; width:34px; line-height:1; padding-top:2px;
+  }
+  .t-label{
+    font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color: var(--ouro); margin-bottom:4px; font-weight:500;
+  }
+  .t-value{
+    font-family:'Playfair Display', serif; font-size:clamp(18px, 4.5vw, 22px); color: var(--vinho); margin-bottom:4px;
+  }
+  .t-extra{
+    font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(14px, 3.2vw, 16px); color: var(--tinta); opacity:0.75;
+  }
+  .t-extra a{ color: var(--vinho); text-decoration:underline; text-decoration-color:var(--rosa); }
+
+  /* ============ PRESENTE ============ */
+  .gift-section{ padding: 60px 24px 10px; }
+  .gift-heading{ text-align:center; margin-bottom:6px; }
+  .gift-heading .kicker{
+    font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color: var(--ouro); margin-bottom:6px;
+  }
+  .gift-heading .title{
+    font-family:'Playfair Display', serif; font-style:italic; font-size:clamp(22px, 5.5vw, 27px); color: var(--vinho); margin-bottom:6px;
+  }
+  .gift-heading .hint-text{
+    font-family:'Jost', sans-serif; font-size:11.5px; color: var(--tinta); opacity:0.5; margin-bottom: 28px;
+  }
+  .gift-list{ display:flex; flex-direction:column; }
+  .gift-card{
+    padding: 20px 2px;
+    border-bottom: 1px solid #F2E2E7;
+    cursor:pointer; user-select:none;
+    display:flex; gap:16px; align-items:flex-start;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .gift-card:last-child{ border-bottom:none; }
+  .gc-mark{
+    flex-shrink:0; width:28px; height:28px; border-radius:50%;
+    border: 1.5px solid var(--rosa); display:flex; align-items:center; justify-content:center;
+    font-family:'Playfair Display', serif; font-style:italic; font-size:13px; color: var(--vinho);
+    transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  }
+  .gift-card:active .gc-mark{ transform:scale(0.92); }
+  .gift-card.open .gc-mark{ background: var(--vinho); color:#fff; }
+  .gc-body{ flex:1; text-align:left; }
+  .gift-card .gc-title{ font-family:'Playfair Display', serif; font-size:clamp(17px, 4vw, 19px); color: var(--vinho); margin-bottom:2px; }
+  .gift-card .gc-text{
+    font-family:'Cormorant Garamond', serif; font-size:clamp(15px, 3.4vw, 16.5px); line-height:1.6; color: var(--tinta);
+    max-height:0; overflow:hidden; opacity:0; transition: max-height 0.5s ease, opacity 0.4s ease, margin-top 0.4s ease;
+  }
+  .gift-card.open .gc-text{ max-height:200px; opacity:1; margin-top:6px; }
+  .gc-hint{ font-size:10px; color: var(--ouro); text-transform:uppercase; letter-spacing:0.1em; margin-top:4px; display:block; opacity:0.6; }
+
+  .tiny-note{
+    margin-top:28px; text-align:center;
+    font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(14px, 3.2vw, 15px); color: var(--tinta); opacity:0.6;
+  }
+
+  /* ============ LINKS ============ */
+  .links-section{ padding: 60px 24px 10px; }
+  .links-heading{ text-align:center; margin-bottom:26px; }
+  .links-heading .kicker{
+    font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color: var(--ouro); margin-bottom:6px;
+  }
+  .links-heading .title{
+    font-family:'Playfair Display', serif; font-style:italic; font-size:clamp(22px, 5.5vw, 27px); color: var(--vinho);
+  }
+  .links-list{ display:flex; flex-direction:column; }
+  .link-card{
+    display:flex; align-items:center; justify-content:space-between; gap:14px; text-align:left;
+    padding:16px 2px; text-decoration:none;
+    border-bottom: 1px solid #F2E2E7;
+    transition: padding-left 0.2s ease;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .link-card:last-child{ border-bottom:none; }
+  .link-card:active{ padding-left:6px; }
+  .link-title{ font-family:'Playfair Display', serif; font-size:clamp(15px, 3.6vw, 16.5px); color: var(--vinho); }
+  .link-sub{ font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(13px, 3vw, 14px); color:#A98262; margin-top:2px; }
+  .link-arrow{ font-size:16px; color: var(--rosa); flex-shrink:0; transition: transform 0.2s ease; }
+  .link-card:active .link-arrow{ transform: translateX(3px); }
+
+  /* ============ RSVP ============ */
+  .rsvp-section{ padding: 60px 24px 80px; text-align:center; }
+  .rsvp-kicker{ font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color: var(--ouro); margin-bottom:8px; }
+  .rsvp-q{ font-family:'Playfair Display', serif; font-style:italic; font-size:clamp(22px, 5.5vw, 28px); color: var(--vinho); margin-bottom:24px; }
+  .rsvp-btns{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+
+  button.cta{
+    border:none; cursor:pointer; font-family:'Jost', sans-serif; font-weight:500;
+    font-size:clamp(12px, 2.8vw, 13px); letter-spacing:0.08em; text-transform:uppercase;
+    padding: 14px 24px; border-radius: 2px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    -webkit-tap-highlight-color:transparent;
+    touch-action:manipulation;
+  }
+  button.cta:active{ transform: scale(0.96); }
+  .cta.yes{
+    background: var(--vinho);
+    color:#fff; box-shadow: 0 8px 20px rgba(178,58,94,0.35);
+  }
+  .cta.yes:active{ background:#9C3050; }
+  .cta.maybe{ background: transparent; color: var(--vinho); border:1.5px solid var(--vinho); }
+  .cta.maybe:active{ background: rgba(178,58,94,0.08); }
+
+  .response{
+    display:none; margin-top:20px; font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size:clamp(17px, 4vw, 19px); color: var(--vinho);
+  }
+  .response.show{ display:block; animation: fadeUp 0.4s ease both; }
+  @keyframes fadeUp{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);} }
+
+  .hearts-burst{ position:fixed; inset:0; pointer-events:none; z-index:50; }
+  .heart-particle{
+    position:absolute; font-size:clamp(16px, 4vw, 22px); opacity:0;
+    animation: heartUp 1.5s ease-out forwards;
+  }
+  @keyframes heartUp{
+    0%{ opacity:0; transform: translateY(0) scale(0.6); }
+    15%{ opacity:1; }
+    100%{ opacity:0; transform: translateY(-150px) scale(1.1) rotate(15deg); }
+  }
+
+  .footer-note{
+    text-align:center; font-size:11px; color: #B98A9B; padding-bottom:20px; letter-spacing:0.04em;
+  }
+
+  @media (max-width: 380px){
+    .letter-section, .timeline-section, .gift-section, .links-section, .rsvp-section{ padding-left:16px; padding-right:16px; }
+    .letter-card{ padding: 28px 18px; }
+    .hero{ min-height:80vh; padding:30px 16px; }
+  }
+
+  @media (min-width: 600px){
+    .page{ max-width:560px; }
+    button.cta:hover{ transform: translateY(-2px); }
+    .cta.yes:hover{ background:#9C3050; }
+    .cta.maybe:hover{ background:rgba(178,58,94,0.06); }
+    .link-card:hover{ padding-left:6px; }
+    .link-card:hover .link-arrow{ transform: translateX(3px); }
+    .gift-card:hover .gc-mark{ transform:scale(1.05); }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
+    .reveal{ opacity:1 !important; transform:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hearts-burst" id="heartsBurst"></div>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+    <div class="blob blob4"></div>
+    <div class="hero-eyebrow">um convite para</div>
+    <div class="hero-title">Clarinha</div>
+    <div class="hero-sub">23 anos, uma vida toda de amizade e uma viagem te esperando.</div>
+    <div class="hero-scroll">role para abrir ↓</div>
+  </div>
+
+  <div class="wave-divider">
+    <svg viewBox="0 0 500 40" preserveAspectRatio="none"><path d="M0,20 C125,50 375,-5 500,20 L500,40 L0,40 Z" fill="#FFFCF9"></path></svg>
+  </div>
+
+  <!-- CARTA -->
+  <div class="letter-section reveal">
+    <div class="letter-card">
+      <div class="salutation">Clarinha,</div>
+      <p>Venho por meio deste lhe parabenizar pelos seus <em>23 anos de vida</em> (muito bem vividos).</p>
+      <p>Você me impulsiona a viver esta vida da melhor forma, a aproveitar as oportunidades e aspirar um tempo ainda melhor para mim e para os outros à minha volta.</p>
+      <p>Sua amizade é um bálsamo para o meu coração. Você me assegura de que somos felizes quando nos rodeamos do amor das pessoas certas; de que a amizade, de fato, é tudo! É se dar sem esperar nada em troca dessa união, é ter alguém para contar na indecisão, nunca <em>(ou um pouco menos de vezes)</em> se desesperar e ter alguém ali para estender a mão.</p>
+      <p class="closing">Com grande alegria, todos os dias, eu te amo!</p>
+      <div class="signoff">De sua melhor amiga, não de infância, mas de toda uma vida, Bia. :)</div>
+    </div>
+  </div>
+
+  <!-- PINTURA -->
+  <div class="painting-section reveal">
+    <span class="float-petal fp1">🌸</span>
+    <span class="float-petal fp2">✦</span>
+    <span class="float-petal fp3">🌸</span>
+    <div class="painting-heading">
+      <div class="painting-title">e é por isso que eu...</div>
+      <div class="painting-sub-wrap">
+        <span class="painting-sub">te levo para Paraty</span>
+        <svg class="brush-underline" viewBox="0 0 280 14" preserveAspectRatio="none">
+          <path d="M5,8 C60,2 120,12 140,7 C170,2 220,11 275,6"></path>
+        </svg>
+      </div>
+    </div>
+    <div class="frame-wrap">
+      <div class="photo-frame">
+        <div class="photo-frame-inner">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Brazil_paraty_wide_street.jpg/960px-Brazil_paraty_wide_street.jpg" alt="Rua de Paraty" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </div>
+    <div class="plaque"><span class="plaque-text">Rua de Paraty — pintura, 2026</span></div>
+    <div class="photo-caption">foi assim que imaginei a gente caminhando por essas ruas coloridas</div>
+  </div>
+
+  <!-- ROTEIRO -->
+  <div class="timeline-section reveal">
+    <div class="timeline-heading">
+      <div class="kicker">o roteiro</div>
+      <div class="title">como tudo vai acontecer</div>
+    </div>
+    <div class="timeline">
+      <div class="t-item">
+        <div class="t-num">I</div>
+        <div class="gc-body" style="flex:1;">
+          <div class="t-label">para onde</div>
+          <div class="t-value">Paraty, RJ</div>
+          <div class="t-extra">aquela cidadezinha colonial à beira-mar que a gente sempre quis conhecer</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-num">II</div>
+        <div class="gc-body" style="flex:1;">
+          <div class="t-label">quando</div>
+          <div class="t-value">1 e 2 de agosto</div>
+          <div class="t-extra">dois dias inteiros, só nossos</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-num">III</div>
+        <div class="gc-body" style="flex:1;">
+          <div class="t-label">onde ficamos</div>
+          <div class="t-value"><a href="https://www.pousadadotesouro.com.br/" target="_blank" rel="noopener">Pousada do Tesouro</a></div>
+          <div class="t-extra">a poucos passos do centro histórico, com jardim e piscina</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRESENTE -->
+  <div class="gift-section reveal">
+    <div class="gift-heading">
+      <div class="kicker">o presente</div>
+      <div class="title">três coisas já garantidas</div>
+      <div class="hint-text">toque em cada uma para abrir</div>
+    </div>
+    <div class="gift-list">
+      <div class="gift-card" data-card="1">
+        <div class="gc-mark">✈</div>
+        <div class="gc-body">
+          <div class="gc-title">Passagens</div>
+          <div class="gc-text">Ida e volta garantidas, por minha conta. Você só precisa fazer a mala.</div>
+          <span class="gc-hint">toque para abrir</span>
+        </div>
+      </div>
+      <div class="gift-card" data-card="2">
+        <div class="gc-mark">⌂</div>
+        <div class="gc-body">
+          <div class="gc-title">Hospedagem</div>
+          <div class="gc-text">Dois dias na Pousada do Tesouro, já reservados e pagos. Chegamos e já é nosso cantinho.</div>
+          <span class="gc-hint">toque para abrir</span>
+        </div>
+      </div>
+      <div class="gift-card" data-card="3">
+        <div class="gc-mark">✦</div>
+        <div class="gc-body">
+          <div class="gc-title">Roteiro</div>
+          <div class="gc-text">Já pensei tudo: o que ver, por onde caminhar, onde ver o pôr do sol. Você só vive o momento.</div>
+          <span class="gc-hint">toque para abrir</span>
+        </div>
+      </div>
+    </div>
+    <div class="tiny-note">o resto da viagem a gente decide lá, com calma — comidinha, mimo extra, tudo no embalo do momento 😉</div>
+  </div>
+
+  <!-- LINKS -->
+  <div class="links-section reveal">
+    <div class="links-heading">
+      <div class="kicker">antes de ir</div>
+      <div class="title">dá uma espiada</div>
+    </div>
+    <div class="links-list">
+      <a class="link-card" href="https://www.pousadadotesouro.com.br/" target="_blank" rel="noopener">
+        <span>
+          <div class="link-title">Pousada do Tesouro</div>
+          <div class="link-sub">onde vamos ficar</div>
+        </span>
+        <span class="link-arrow">→</span>
+      </a>
+      <a class="link-card" href="https://paraty.com.br/centro-historico-de-paraty/" target="_blank" rel="noopener">
+        <span>
+          <div class="link-title">Centro Histórico de Paraty</div>
+          <div class="link-sub">ruas de pedra, casinhas coloridas e mar</div>
+        </span>
+        <span class="link-arrow">→</span>
+      </a>
+      <a class="link-card" href="https://pt.wikipedia.org/wiki/Paraty" target="_blank" rel="noopener">
+        <span>
+          <div class="link-title">Sobre Paraty</div>
+          <div class="link-sub">um pouco da história do nosso destino</div>
+        </span>
+        <span class="link-arrow">→</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- RSVP -->
+  <div class="rsvp-section reveal">
+    <div class="rsvp-kicker">por fim</div>
+    <div class="rsvp-q">e aí, topa esse mergulho comigo?</div>
+    <div class="rsvp-btns">
+      <button class="cta yes" id="yesBtn">Eu vou!</button>
+      <button class="cta maybe" id="maybeBtn">Me conta mais</button>
+    </div>
+    <div class="response" id="response"></div>
+  </div>
+
+  <div class="footer-note">feito com carinho, especialmente pra você</div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  // ========================================
+  // REVEAL ON SCROLL (com fallback)
+  // ========================================
+  const reveals = document.querySelectorAll('.reveal');
+
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -20px 0px' });
+
+    reveals.forEach(function(r) { obs.observe(r); });
+  } else {
+    // fallback: revela tudo
+    reveals.forEach(function(r) { r.classList.add('in'); });
+  }
+
+  // ========================================
+  // GIFT CARDS (toque/clique)
+  // ========================================
+  document.querySelectorAll('.gift-card').forEach(function(card) {
+    card.addEventListener('click', function(e) {
+      e.preventDefault();
+      this.classList.toggle('open');
+    });
+    // suporte a toque para mobile
+    card.addEventListener('touchstart', function(e) {
+      // só para garantir resposta tátil
+    }, { passive: true });
+  });
+
+  // ========================================
+  // RSVP - WhatsApp com mensagem personalizada
+  // ========================================
+  var phoneNumber = '5521995259490';
+  var baseUrl = 'https://wa.me/' + phoneNumber;
+
+  var yesBtn = document.getElementById('yesBtn');
+  var maybeBtn = document.getElementById('maybeBtn');
+  var response = document.getElementById('response');
+  var heartsBurst = document.getElementById('heartsBurst');
+
+  // Função para redirecionar ao WhatsApp
+  function redirectToWhatsApp(message) {
+    var encodedMsg = encodeURIComponent(message);
+    var url = baseUrl + '?text=' + encodedMsg;
+    window.open(url, '_blank');
+  }
+
+  // Função de burst de corações
+  function burstHearts() {
+    var emojis = ['💗', '🌸', '✨', '🎀', '💖', '🌺', '⭐'];
+    for (var i = 0; i < 14; i++) {
+      var h = document.createElement('div');
+      h.className = 'heart-particle';
+      h.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      h.style.left = (30 + Math.random() * 40) + '%';
+      h.style.bottom = '15%';
+      h.style.animationDelay = (Math.random() * 0.4) + 's';
+      heartsBurst.appendChild(h);
+      setTimeout(function(el) { el.remove(); }, 2000, h);
+    }
+  }
+
+  // Botão "Eu vou!"
+  yesBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    var message = 'Oi Bia! Claro que eu vou! Já estou super animada para essa viagem juntas. <3 ❤️';
+    redirectToWhatsApp(message);
+    response.textContent = 'Combinado! Já estou contando os dias até 1º de agosto. ✦';
+    response.classList.add('show');
+    burstHearts();
+  });
+
+  // Botão "Me conta mais"
+  maybeBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    var message = 'Oi Bia! Quero saber mais detalhes da viagem. Me conta tudinho! 🥰🥰';
+    redirectToWhatsApp(message);
+    response.textContent = 'Me chama e eu te conto tudinho — quero ouvir suas perguntas! ✦';
+    response.classList.add('show');
+  });
+
+  // ========================================
+  // PREVENIR ZOOM DUPLO EM MOBILE (melhora UX)
+  // ========================================
+  document.addEventListener('dblclick', function(e) {
+    e.preventDefault();
+  }, { passive: false });
+
+})();
+</script>
+
+</body>
+</html>
